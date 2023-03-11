@@ -2,10 +2,15 @@
 
 基本面量化分析和实证资产定价分析中常用的一些基础数据处理函数和类
 
+- [quantamental-toolbox](#quantamental-toolbox)
+      - [1. 基本工具类](#1-基本工具类)
+          - [1. ​	parallelmap并行计算处理](#1-parallelmap并行计算处理)
+          - [2. ​	extpandas Pandas拓展](#2-extpandas-pandas拓展)
+      - [2. 未来收益率计算器](#2-未来收益率计算器)
+          - [1. 未来M到N（N \>= M \>= 1）日，共 N-M+1 个交易日的累计收益率ret\_pM\_pN：](#1-未来m到nn--m--1日共-n-m1-个交易日的累计收益率ret_pm_pn)
+          - [2. 固定日期月收益率ret\_m\_K：](#2-固定日期月收益率ret_m_k)
+      - [3. 财务报告数据处理](#3-财务报告数据处理)
 
-
-
-[TOC]
 
 #### 1. 基本工具类
 
