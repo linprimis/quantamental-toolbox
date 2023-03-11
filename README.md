@@ -51,11 +51,11 @@
 
 拓展研究分析中常用的groupby / rolling - apply功能。
 
-   - **parallel_groupby_apply(grouped, func, ******kwargs) ** 提供group层面多进程并行的groupby-apply功能
+   - <u>parallel_groupby_apply(grouped, func, **kwargs)</u> 提供group层面多进程并行的groupby-apply功能
 
-   - **rolling_apply(rolling, func, ******kwargs)** 中apply函数可操作整个数据框的多列，便于计算而pandas原版rolling-apply只能操作一列，且加进度条
+   - <u>rolling_apply(rolling, func, **kwargs)</u> 函数可操作整个数据框的多列，便于计算而pandas原版rolling-apply只能操作一列，且加进度条
 
-   - **parallel_rolling_apply(rolling, func, ******kwargs)**** 提供多进程并行滚动计算功能
+   - <u>parallel_rolling_apply(rolling, func, **kwargs)</u> 提供多进程并行滚动计算功能
 
    - 示例：
 
