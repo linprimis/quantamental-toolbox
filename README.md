@@ -60,12 +60,13 @@
    - 示例：
 
      ```python
+     import extpandas
      ## 多进程分组因子标准化，传入grouped和函数
-     parallel_groupby_apply(df.groupby('date')['factor'],lambda x:(x-x.mean())/x.std())
+     extpandas.parallel_groupby_apply(df.groupby('date')['factor'],lambda x:(x-x.mean())/x.std())
      
      ## 多进程滚动回归,传入rolling和函数
      import statsmodels.api as sm
-     parallel_rolling_apply(df['y','x1','x2'].rolling(60,min_period=30),
+     extpandas.parallel_rolling_apply(df['y','x1','x2'].rolling(60,min_period=30),
                             lambda data:sm.OLS(data['y'],data['x1','x2']).fit().params)
      ```
      

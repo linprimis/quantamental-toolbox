@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import datetime
 import parallelmap
-import parallelpandas
+import extpandas
 
 
 class RetCalc:
@@ -46,7 +46,7 @@ class RetCalc:
 
     @classmethod
     def ret_pM_pN_core(cls, grouped, M=1, N=5, **kwargs):
-        return parallelpandas.parallel_groupby_apply(grouped, lambda x: x.iloc[::-1].rolling(N - M + 1).apply(
+        return extpandas.parallel_groupby_apply(grouped, lambda x: x.iloc[::-1].rolling(N - M + 1).apply(
             lambda x: (1 + x).prod() - 1).shift(M).iloc[::-1], **kwargs)
 
     def ret_pM_pN(self, M, N, inplace=False, **kwargs):
@@ -176,14 +176,13 @@ class RetCalc:
 
         assert 1 <= key_day <= 28
 
-        ## 若没有生成过分组，先生成分组
         ## if the grouping has not been generated, generate the grouping first
         if self.grouped is None:
             self._gen_grouped()
 
-        ## 获取”月“起止日期，并以多线程计算
+        ## 获取”月“起止日期，并以多进程计算不同股票的”月“收益率
         calendar_df = self.get_start_end(key_day)
-        datas = parallelpandas.parallel_groupby_apply(self.grouped,
+        datas = extpandas.parallel_groupby_apply(self.grouped,
                                                       lambda group: self.ret_m_K_core(df=group,
                                                                                       calendar_df=calendar_df,
                                                                                       key_day=key_day,
